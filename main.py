@@ -3,6 +3,7 @@ import datetime as dt
 import os
 import employee
 import employee_functions as emp
+import uuid
 
 
 while True:
@@ -16,8 +17,38 @@ while True:
 print(num_employee)
 
 
+def menu():
+    # Ask user for what they would like to do
+    while True:
+        try:
+            choice = input(
+                "Please enter 'L' for Listing Employees, 'A' for Adding Employees, 'U' for Updating Employees, 'R' for Removing Employees, 'E' to exit app: ").upper()
+            break
+        except ValueError:
+            print("Please enter a valid input 'L' 'A' 'U' 'R'")
+        except TypeError:
+            print("Please enter a valid input 'L' 'A' 'U' 'R'")
+
+    if choice == 'E':
+        # Exit Application
+        quit()
+    elif choice == 'R':
+        # Call Employee Removing Function
+        pass
+    elif choice == 'A':
+        # Call Employee Adding Function
+        pass
+    elif choice == 'U':
+        # Call Employee Updating Function
+        pass
+    else:
+        # Call Employee Listing Function
+        pass
+
+
 def main():
 
+    # Adding Employee
     employee_comp = []
     for _ in range(0, num_employee):
         new_emp = employee.Employee(name=emp.get_name(), age=emp.get_age(), years_coding=emp.years_coding(

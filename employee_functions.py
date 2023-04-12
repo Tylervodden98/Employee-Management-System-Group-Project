@@ -74,20 +74,19 @@ def favorite_languages():
     return favorite_language
 
 
-def print_csv(dict_user: dict):
-    # Check if file exists, if it does append to it
-    if os.path.isfile(f"./{dict_user['name']}.csv"):
-        with open(f"{dict_user['name']}.csv", "a") as employee:
-            for key, value in dict_user.items():
-                employee.write(f"{key}:{value}\n")
-    else:
-        # Open file and write to employees.csv if it doesnt exist
-        with open(f"{dict_user['name']}.csv", "wt") as employee:
-            for key, value in dict_user.items():
-                employee.write(f"{key}:{value}\n")
+# def print_csv(dict_user: dict):
+#     # Check if file exists, if it does append to it
+#     if os.path.isfile(f"./{dict_user['name']}.csv"):
+#         with open(f"{dict_user['name']}.csv", "a") as employee:
+#             for key, value in dict_user.items():
+#                 employee.write(f"{key}:{value}\n")
+#     else:
+#         # Open file and write to employees.csv if it doesnt exist
+#         with open(f"{dict_user['name']}.csv", "wt") as employee:
+#             for key, value in dict_user.items():
+#                 employee.write(f"{key}:{value}\n")
 
-def get_id():
-    pass
+
 
 # def employee():
 
