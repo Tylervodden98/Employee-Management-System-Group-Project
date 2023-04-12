@@ -11,28 +11,26 @@ def menu():
     while True:
         try:
             choice = input(
-                "Please enter 'L' for Listing Employees, 'A' for Adding Employees, 'U' for Updating Employees, 'R' for Removing Employees, 'E' to exit app: ").upper()
-            break
+                "Please enter 'L' for Listing Employees, 'A' for Adding Employees, 'U' for Updating Employees, 'R' for Removing Employees, 'Q' to quit app: ").upper()
+            if choice == 'Q':
+                # Exit Application
+                quit()
+            elif choice == 'R':
+                # Call Employee Removing Function
+                print("Removing Employee")
+            elif choice == 'A':
+                # Call Employee Adding Function
+                print("Adding Employee")
+            elif choice == 'U':
+                # Call Employee Updating Function
+                print("Updating Employee")
+            else:
+                # Call Employee Listing Function
+                print("Listing Employees")
         except ValueError:
             print("Please enter a valid input 'L' 'A' 'U' 'R'")
         except TypeError:
             print("Please enter a valid input 'L' 'A' 'U' 'R'")
-
-    if choice == 'E':
-        # Exit Application
-        quit()
-    elif choice == 'R':
-        # Call Employee Removing Function
-        pass
-    elif choice == 'A':
-        # Call Employee Adding Function
-        pass
-    elif choice == 'U':
-        # Call Employee Updating Function
-        pass
-    else:
-        # Call Employee Listing Function
-        pass
 
 
 def main():
