@@ -2,11 +2,13 @@ import csv
 import datetime as dt
 import os
 import random
+import uuid
 
 # User input functions for employee class
 
 # Name Function
 
+global employee_list
 
 def get_name():
     return input("Please enter your name: ").capitalize()
@@ -89,39 +91,14 @@ def print_csv(dict_user: dict):
 def get_id():
     pass
 
-# def employee():
+def list(list):
 
-#     dict_user = {}
-#     # Ask user for their entries to the dictionary
-#     dict_user["name"] = get_name()
-#     dict_user["age"] = get_age()
-#     dict_user["years coding"] = years_coding()
+    try:
+        file = open("employees.json", "r")
+        print(file.read())
 
-#     dict_user["birthday"] = birthday_info()
-#     # Ask for their first three programming languages as tuple
-#     languages = first_languages()
-#     tuple_language = tuple(languages)
-
-#     # Ask for their 3 favourite coding languages as list
-#     favorite_language = favorite_languages()
-
-#     # Create a set that is an intersection of first 3 languages, and favorite languages
-#     language_intersection = list(set(languages) & set(favorite_language))
-
-#     # Add all the collections to the dictionary
-#     dict_user["first_languages"] = languages
-#     dict_user["favorite_languages"] = favorite_language
-#     dict_user["language_intersection"] = language_intersection
-
-#     # Write to csv file
-#     print_csv(dict_user)
-
-#     for pairs in dict_user.items():
-#         print(f"{pairs[0]} = {pairs[1]}")
-
-#     # Return employee in list
-#     return dict_user
-
+    except:
+        print("File does not exist.")
 
 def num_employee():
     while True:
