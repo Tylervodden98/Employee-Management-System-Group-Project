@@ -5,7 +5,6 @@ import random
 import uuid
 import json
 
-
 # User input functions for employee class
 
 # Name Function
@@ -83,18 +82,24 @@ def favorite_languages():
 def get_id():
     return str(uuid.uuid1())
 
-def list(list):
+def list_employees():
 
     try:
         file = open("employees.json", "r")
-        emp_list = json.load(file)
-        emp_keys = emp_list.keys()
-
-        for i in range(0, len(emp_list)):
-            print (emp_keys[i] + ": " + emp_list[emp_keys[i]] )
-
     except:
         print("Import file does not exist.\n")
+
+    emp_list = json.load(file)
+
+    for i in emp_list["emp_details"]:
+        print("ID: " + i["id"])
+        print("Full Name: " + i["first_name"] + " " + i["last_name"])
+        print("Age: " + str(i["age"]))
+        print("Department: " + i["department"])
+        print("Date of Employment: : " + str(i["date_of_employment"]))
+        print("Salary: " + str(i["salary"]))
+        print("Birthday: " + str(i["birthday"]))
+        print()
 
 def num_employee():
     while True:
