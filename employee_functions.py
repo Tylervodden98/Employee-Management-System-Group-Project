@@ -28,20 +28,7 @@ def get_age():
             print("Please enter a number for your age!")
     return age
 
-# Years Coding Function
-
-
-def years_coding():
-    while True:
-        try:
-            coding = int(
-                input("Please enter your amount of years coding: "))
-            break
-        except ValueError:
-            print("Please enter a number for your years of experience coding!")
-        except TypeError:
-            print("Please enter a number for your years of experience coding!")
-    return coding
+# Birthday Function
 
 
 def birthday_info():

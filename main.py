@@ -3,7 +3,6 @@ import datetime as dt
 import os
 import employee
 import employee_functions as emp
-import uuid
 
 
 def menu():
