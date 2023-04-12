@@ -74,54 +74,6 @@ def favorite_languages():
     return favorite_language
 
 
-# def print_csv(dict_user: dict):
-#     # Check if file exists, if it does append to it
-#     if os.path.isfile(f"./{dict_user['name']}.csv"):
-#         with open(f"{dict_user['name']}.csv", "a") as employee:
-#             for key, value in dict_user.items():
-#                 employee.write(f"{key}:{value}\n")
-#     else:
-#         # Open file and write to employees.csv if it doesnt exist
-#         with open(f"{dict_user['name']}.csv", "wt") as employee:
-#             for key, value in dict_user.items():
-#                 employee.write(f"{key}:{value}\n")
-
-
-
-# def employee():
-
-#     dict_user = {}
-#     # Ask user for their entries to the dictionary
-#     dict_user["name"] = get_name()
-#     dict_user["age"] = get_age()
-#     dict_user["years coding"] = years_coding()
-
-#     dict_user["birthday"] = birthday_info()
-#     # Ask for their first three programming languages as tuple
-#     languages = first_languages()
-#     tuple_language = tuple(languages)
-
-#     # Ask for their 3 favourite coding languages as list
-#     favorite_language = favorite_languages()
-
-#     # Create a set that is an intersection of first 3 languages, and favorite languages
-#     language_intersection = list(set(languages) & set(favorite_language))
-
-#     # Add all the collections to the dictionary
-#     dict_user["first_languages"] = languages
-#     dict_user["favorite_languages"] = favorite_language
-#     dict_user["language_intersection"] = language_intersection
-
-#     # Write to csv file
-#     print_csv(dict_user)
-
-#     for pairs in dict_user.items():
-#         print(f"{pairs[0]} = {pairs[1]}")
-
-#     # Return employee in list
-#     return dict_user
-
-
 def num_employee():
     while True:
         try:
