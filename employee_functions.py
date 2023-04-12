@@ -1,6 +1,7 @@
 import csv
 import datetime as dt
 import os
+import random
 
 # User input functions for employee class
 
@@ -85,6 +86,8 @@ def print_csv(dict_user: dict):
             for key, value in dict_user.items():
                 employee.write(f"{key}:{value}\n")
 
+def get_id():
+    pass
 
 # def employee():
 
