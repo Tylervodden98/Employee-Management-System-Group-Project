@@ -3,6 +3,7 @@ import datetime as dt
 import os
 import random
 import uuid
+import json
 
 # User input functions for employee class
 
@@ -89,16 +90,20 @@ def print_csv(dict_user: dict):
                 employee.write(f"{key}:{value}\n")
 
 def get_id():
-    pass
+    return str(uuid.uuid1())
 
 def list(list):
 
     try:
         file = open("employees.json", "r")
-        print(file.read())
+        emp_list = json.load(file)
+        emp_keys = emp_list.keys()
+
+        for i in range(0, len(emp_list)):
+            print (emp_keys[i] + ": " + emp_list[emp_keys[i]] )
 
     except:
-        print("File does not exist.")
+        print("Import file does not exist.\n")
 
 def num_employee():
     while True:
