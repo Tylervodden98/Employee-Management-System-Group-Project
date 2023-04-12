@@ -2,6 +2,8 @@ import csv
 import datetime as dt
 import os
 import random
+import uuid
+import json
 
 
 # User input functions for employee class
@@ -79,13 +81,17 @@ def favorite_languages():
     return favorite_language
 
 def get_id():
-    pass
+    return str(uuid.uuid1())
 
 def list(list):
 
     try:
         file = open("employees.json", "r")
-        print(file.read())
+        emp_list = json.load(file)
+        emp_keys = emp_list.keys()
+
+        for i in range(0, len(emp_list)):
+            print (emp_keys[i] + ": " + emp_list[emp_keys[i]] )
 
     except:
         print("Import file does not exist.\n")

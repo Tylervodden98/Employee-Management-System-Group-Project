@@ -13,7 +13,7 @@ def main():
     for _ in range(0, num_employee):
 
         full_name = emp.get_name().split()
-        new_emp = employee.Employee(id = str(uuid.uuid1()), #randomly generate UUID
+        new_emp = employee.Employee(id = emp.get_id(), #randomly generate UUID
                                     first_name=full_name[0].capitalize(),
                                     last_name=full_name[1].capitalize(),  #error check this later
                                     age=str(emp.get_age()), 
@@ -23,8 +23,6 @@ def main():
                                     favorite_languages=emp.favorite_languages())
 
         employee_comp.append(new_emp)
-
-    # employee_comp = [E.Employee() for num_person in range(0, number_employee)]
 
     emp.printlist(emp, employee_comp)
 
