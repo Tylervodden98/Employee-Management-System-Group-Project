@@ -1,3 +1,4 @@
+import employee
 import csv
 import datetime as dt
 import os
@@ -248,6 +249,69 @@ def remove_employee():
             with open("employees.json", "r") as employee_json_file:
                 emp_data = json.load(employee_json_file)
 
+
+def update():
+    emp_id = input("Enter employee ID: ")
+    # Check if employee with the given ID exists
+    with open("./employees.json", "r") as json_file:
+        data = json.load(json_file)
+        emp_there = False
+    for i,emp_dict in enumerate(data['emp_details']):
+        # check user id put the user inputted id for "id"
+        if emp_id == emp_dict["id"]:
+            index = i
+            emp_there = True
+            pass
+    if emp_there:
+        print("Employee with ID", emp_id, "found")
+        #keeps track of dictionary keys
+        keys = list(data['emp_details'][0].keys())
+        print(keys)
+        try:
+            attribute = input(f"Enter attribute to update {keys} ")
+            if attribute in keys and attribute != "id":
+                #value = input("Enter new value for attribute: ")
+                if attribute == "first_name":
+                    value = get_fname()
+                    data['emp_details'][index][attribute] = value
+                elif attribute == "last_name":
+                    value = get_lname()
+                    data['emp_details'][index][attribute] = value
+                elif attribute == "age":
+                    value = get_age()
+                    data['emp_details'][index][attribute] = value
+                elif attribute == "department":
+                    value = get_department()
+                    data['emp_details'][index][attribute] = value
+                elif attribute == "date_of_employment":
+                    value = get_date_of_employment()
+                    data['emp_details'][index][attribute] = value
+                elif attribute == "salary":
+                    value = get_salary()
+                    data['emp_details'][index][attribute] = value
+                elif attribute == "birthday":
+                    value = get_birthday_info()
+                    data['emp_details'][index][attribute] = value
+            else:
+                raise Exception
+            
+        except:
+            print("Attribute doesnt exist in dictionary")
+               
+        # Update attribute
+        
+        print(data['emp_details'][index])
+        
+    else:
+        print("Employee with ID", emp_id, "does not exist")
+        
+
+    
+
+    # Write updated employee data to JSON file
+    with open('employees.json', 'w') as f:
+        json.dump(data, f,indent=4)
+
             if(emp_data["emp_details"] == []):
                 print("\nSorry the file is empty. There are no more employees to delete.")
                 break
@@ -273,3 +337,4 @@ def remove_employee():
                 break
         except Exception:
             print("\nSorry this is not a valid employee id. Please try again.")   
+
