@@ -131,7 +131,7 @@ def get_id():
     return userid
 #department function
 def get_department():
-    departments = ['coding','fashion', 'data science','data analytics', 'finance', 'dog food taster']
+    departments = ['CEO','COO', 'finance', 'office manager', 'receptionist','dog food taster']
 
     while True:
         try:
@@ -252,4 +252,3 @@ def remove_employee():
 
             # loop through and collect all ids into a list
 
-print(get_department())
