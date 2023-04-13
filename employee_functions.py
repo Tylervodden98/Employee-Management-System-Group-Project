@@ -140,33 +140,49 @@ def printlist(self, list):
         print()
 
 def remove_employee():
-    while True: 
+    # create an empty list to store all employee id's 
+    list_of_user_ids = []
+    with open("employees.json", "r") as json_file:
+        data = json.load(json_file)
+    # append employee id's to list 
+    for id_dict in data['emp_details']:
+        list_of_user_ids.append(id_dict["id"])
+
+    while True:
         try:
-            id_to_delete = input("""\nPlease note you will not be able to recover deleted employee. 
-                                    For the employee you'd like to delete, please enter their ID: """)
-
-            # read and write to json file
+         # check to see if file contains any employees
             with open("employees.json", "r") as employee_json_file:
-                # the json.load() function which accepts a file object and does the f.read() part for you under the hood
                 emp_data = json.load(employee_json_file)
-                # use a for loop to iterate through JSON object returned as a dictionary 
-                for i, emp_dict in enumerate (emp_data["emp_details"]):
-                    # check to see if employee with given id exists
-                    print(emp_dict["id"])
-                    if id_to_delete == emp_dict["id"]:
-                        # remove dictionary containing employee id 
-                        emp_data["emp_details"].pop(i)
-                        print(emp_data)
-                    else:
-                        break
-                # write changes back to json file 
-            with open("employees.json", "w") as employee_json_file:
-                json_string = json.dumps(emp_data, indent=4)
-                employee_json_file.write(json_string)
+            if(emp_data["emp_details"] == []):
+                print("\nSorry the file is empty. There are no more employees to delete.")
+                break
+            else:
+                id_to_delete = input("\nPlease note you will not be able to recover deleted employee. For the employee you'd like to delete, please enter their ID: ")
+                # if employee id of interest is in list of all valid id's
+                if id_to_delete in list_of_user_ids:
+                    # read and write to json file
+                    with open("employees.json", "r") as employee_json_file:
+                        emp_data = json.load(employee_json_file)
+                        # use a for loop to iterate through JSON object returned as a dictionary 
+                        for i, emp_dict in enumerate (emp_data["emp_details"]):
+                            # check to see if employee with given id exists
+                            if id_to_delete == emp_dict["id"]:
+                                # remove dictionary containing employee id 
+                                emp_data["emp_details"].pop(i)
+                                print(f"\n The employee {emp_dict['first_name']} {emp_dict['last_name']} with employee ID {id_to_delete} was successfully deleted.")
 
-        except:    
-            print("Sorry this employee doesn't exist. Please enter a valid employee id.")
-            # if user wants to go back to main menu ???
+                        # write changes back to json file 
+                    with open("employees.json", "w") as employee_json_file:
+                        json_string = json.dumps(emp_data, indent=4)
+                        employee_json_file.write(json_string)
+                    
+                else: raise Exception
+                break
+        except Exception:
+            print("\nSorry this is not a valid employee id. Please try again.")   
 
-            # loop through and collect all ids into a list
+
+
+    
+
 
