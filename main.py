@@ -12,7 +12,7 @@ def menu():
             choice = input(
                 "Please enter 'L' for Listing Employees, 'A' for Adding Employees, 'U' for Updating Employees, 'R' for Removing Employees, 'Q' to exit app: \n> ").upper()
             if choice == 'L':
-                # Call Employee Updating Function
+                # Call Employee Listing Function
                 emp.list_employees()
                 pass
             elif choice == 'Q':
