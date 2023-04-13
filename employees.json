@@ -23,17 +23,6 @@
             "birthday": "20-02-1773"
         },
         {
-            "id": "2002",
-            "first_name": "John",
-            "last_name": "Doe",
-            "age": 250,
-            "years_coding": 50,
-            "department": "finance",
-            "date_of_employment": "1998-10-12",
-            "salary": 50000,
-            "birthday": "20-02-1773"
-        },
-        {
             "id": "2001",
             "first_name": "Bubbly",
             "last_name": "Won",

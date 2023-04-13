@@ -233,21 +233,49 @@ def add_employee():
 
 
 def remove_employee():
-
-    # create an empty list to store all employee id's 
+    # create an empty list to store all employee id's
     list_of_user_ids = []
     with open("employees.json", "r") as json_file:
         data = json.load(json_file)
-    # append employee id's to list 
+    # append employee id's to list
     for id_dict in data['emp_details']:
         list_of_user_ids.append(id_dict["id"])
 
-
     while True:
         try:
-         # check to see if file is empty 
+         # check to see if file is empty
             with open("employees.json", "r") as employee_json_file:
                 emp_data = json.load(employee_json_file)
+            if (emp_data["emp_details"] == []):
+                print(
+                    "\nSorry the file is empty. There are no more employees to delete.")
+                break
+            else:
+                id_to_delete = input(
+                    "\nPlease note you will not be able to recover deleted employee. For the employee you'd like to delete, please enter their ID: ")
+                # if employee id of interest is in list of all valid id's
+                if id_to_delete in list_of_user_ids:
+                    with open("employees.json", "r") as employee_json_file:
+                        emp_data = json.load(employee_json_file)
+                        # use a for loop to iterate through JSON object returned as a dictionary
+                        for i, emp_dict in enumerate(emp_data["emp_details"]):
+                            # check to see if employee with given id exists
+                            if id_to_delete == emp_dict["id"]:
+                                # remove dictionary containing employee id
+                                emp_data["emp_details"].pop(i)
+                                print(
+                                    f"\n The employee {emp_dict['first_name']} {emp_dict['last_name']} with employee ID {id_to_delete} was successfully deleted.")
+
+                    # write changes back to json file
+                    with open("employees.json", "w") as employee_json_file:
+                        json_string = json.dumps(emp_data, indent=4)
+                        employee_json_file.write(json_string)
+
+                else:
+                    raise Exception
+                break
+        except Exception:
+            print("\nSorry this is not a valid employee id. Please try again.")
 
 
 def update():
@@ -256,7 +284,7 @@ def update():
     with open("./employees.json", "r") as json_file:
         data = json.load(json_file)
         emp_there = False
-    for i,emp_dict in enumerate(data['emp_details']):
+    for i, emp_dict in enumerate(data['emp_details']):
         # check user id put the user inputted id for "id"
         if emp_id == emp_dict["id"]:
             index = i
@@ -264,13 +292,13 @@ def update():
             pass
     if emp_there:
         print("Employee with ID", emp_id, "found")
-        #keeps track of dictionary keys
+        # keeps track of dictionary keys
         keys = list(data['emp_details'][0].keys())
         print(keys)
         try:
             attribute = input(f"Enter attribute to update {keys} ")
             if attribute in keys and attribute != "id":
-                #value = input("Enter new value for attribute: ")
+                # value = input("Enter new value for attribute: ")
                 if attribute == "first_name":
                     value = get_fname()
                     data['emp_details'][index][attribute] = value
@@ -294,47 +322,13 @@ def update():
                     data['emp_details'][index][attribute] = value
             else:
                 raise Exception
-            
+
         except:
             print("Attribute doesnt exist in dictionary")
-               
+
         # Update attribute
-        
+
         print(data['emp_details'][index])
-        
+
     else:
         print("Employee with ID", emp_id, "does not exist")
-        
-
-    
-
-    # Write updated employee data to JSON file
-    with open('employees.json', 'w') as f:
-        json.dump(data, f,indent=4)
-
-            if(emp_data["emp_details"] == []):
-                print("\nSorry the file is empty. There are no more employees to delete.")
-                break
-            else:
-                id_to_delete = input("\nPlease note you will not be able to recover deleted employee. For the employee you'd like to delete, please enter their ID: ")
-                # if employee id of interest is in list of all valid id's
-                if id_to_delete in list_of_user_ids:
-                    with open("employees.json", "r") as employee_json_file:
-                        emp_data = json.load(employee_json_file)
-                        # use a for loop to iterate through JSON object returned as a dictionary 
-                        for i, emp_dict in enumerate (emp_data["emp_details"]):
-                            # check to see if employee with given id exists
-                            if id_to_delete == emp_dict["id"]:
-                                # remove dictionary containing employee id 
-                                emp_data["emp_details"].pop(i)
-
-                    # write changes back to json file 
-                    with open("employees.json", "w") as employee_json_file:
-                        json_string = json.dumps(emp_data, indent=4)
-                        employee_json_file.write(json_string)
-                    
-                else: raise Exception
-                break
-        except Exception:
-            print("\nSorry this is not a valid employee id. Please try again.")   
-
