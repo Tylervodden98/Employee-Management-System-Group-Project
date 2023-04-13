@@ -131,7 +131,21 @@ def get_id():
     return userid
 #department function
 def get_department():
-    return input("Please enter your department: \n> ")
+    departments = ['coding','fashion', 'data science','data analytics', 'finance', 'dog food taster']
+
+    while True:
+        try:
+            x = input("Please enter your department: \n> ")
+            if x in departments:
+                break
+            else:
+                print("department does not exist, select another department")
+        except:
+            pass
+  
+
+
+    return x
 #number of employees function
 def get_num_employee():
     while True:
@@ -238,3 +252,4 @@ def remove_employee():
 
             # loop through and collect all ids into a list
 
+print(get_department())
