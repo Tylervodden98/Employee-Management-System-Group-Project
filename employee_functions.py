@@ -2,7 +2,6 @@ import csv
 import datetime as dt
 import os
 import random
-import uuid
 import json
 
 # User input functions for employee class
@@ -11,11 +10,12 @@ import json
 
 global employee_list
 
+
 def get_name():
     string = input("Please enter your full name: \n> ")
-    while(" " not in string):
+    while (" " not in string):
         string = input("Please enter your first and last name: \n> ")
-    return  string
+    return string
 
 # Age function
 
@@ -64,24 +64,6 @@ def birthday_info():
     return birthday
 
 
-def first_languages():
-    languages = []
-    for num in range(1, 4):
-        languages.append(
-            input(f"Enter {num} of 3 of your first coding languages: \n> ").capitalize())
-    return languages
-
-
-def favorite_languages():
-    favorite_language = []
-    for num in range(1, 4):
-        favorite_language.append(
-            input(f"Enter {num} of 3 of your favorite coding languages: \n> ").capitalize())
-    return favorite_language
-
-def get_id():
-    return str(uuid.uuid1())
-
 def list_employees():
 
     try:
@@ -101,28 +83,33 @@ def list_employees():
         print("Birthday: " + str(i["birthday"]))
         print()
 
+
 def num_employee():
     while True:
         try:
-            num_employee = int(input("How many employees you want to add?\n> "))
+            num_employee = int(
+                input("How many employees you want to add?\n> "))
             break
         except ValueError:
             print("Please enter an integer for how many employees you want:\n> ")
         except TypeError:
-            print("Please enter an integer type number for how many employees you want:\n> ")
+            print(
+                "Please enter an integer type number for how many employees you want:\n> ")
     return num_employee
 
+
 def printlist(self, list):
-        for employee in list:
-            print("ID: " + employee.dict_user["id"])
-            print("Name: " + employee.dict_user["first_name"] + " " + employee.dict_user["last_name"])
-            print("Age: " + employee.dict_user["age"])
-            print("Years Coding: " + employee.dict_user["years_coding"])
-            print("Birthday: " + employee.dict_user["birthday"])
-            print("First Languages: " + employee.dict_user["first_languages"][0] + ", " +
-                  employee.dict_user["first_languages"][1] + ", " +
-                   employee.dict_user["first_languages"][2])
-            print("Favorite Languages: " + employee.dict_user["favorite_languages"][0] + ", " +
-                  employee.dict_user["favorite_languages"][1] + ", " +
-                   employee.dict_user["favorite_languages"][2] )
-            print()
+    for employee in list:
+        print("ID: " + employee.dict_user["id"])
+        print(
+            "Name: " + employee.dict_user["first_name"] + " " + employee.dict_user["last_name"])
+        print("Age: " + employee.dict_user["age"])
+        print("Years Coding: " + employee.dict_user["years_coding"])
+        print("Birthday: " + employee.dict_user["birthday"])
+        print("First Languages: " + employee.dict_user["first_languages"][0] + ", " +
+              employee.dict_user["first_languages"][1] + ", " +
+              employee.dict_user["first_languages"][2])
+        print("Favorite Languages: " + employee.dict_user["favorite_languages"][0] + ", " +
+              employee.dict_user["favorite_languages"][1] + ", " +
+              employee.dict_user["favorite_languages"][2])
+        print()
