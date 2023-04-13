@@ -5,6 +5,7 @@
             "first_name": "Arthur",
             "last_name": "Pendragon",
             "age": 250,
+            "years_coding": 50,
             "department": "finance",
             "date_of_employment": "1998-10-12",
             "salary": 50000,
@@ -15,6 +16,7 @@
             "first_name": "Bob",
             "last_name": "The Builder",
             "age": 250,
+            "years_coding": 50,
             "department": "finance",
             "date_of_employment": "1998-10-12",
             "salary": 50000,
@@ -25,6 +27,7 @@
             "first_name": "John",
             "last_name": "Doe",
             "age": 250,
+            "years_coding": 50,
             "department": "finance",
             "date_of_employment": "1998-10-12",
             "salary": 50000,
@@ -35,10 +38,22 @@
             "first_name": "Bubbly",
             "last_name": "Won",
             "age": 250,
-            "department": "finance",
+            "years_coding": 50,
             "date_of_employment": "1998-10-12",
             "salary": 50000,
-            "birthday": "20-02-1773"
+            "birthday": "20-02-1773",
+            "department": "finance"
+        },
+        {
+            "id": "6732",
+            "first_name": "ty",
+            "last_name": "vod",
+            "age": 25,
+            "years_coding": 5,
+            "date_of_employment": "1000-12-12",
+            "salary": 40000,
+            "birthday": "1000-12-12",
+            "department": "hr"
         }
     ]
 }
