@@ -137,8 +137,8 @@ def get_department():
         except:
             pass
     return x
-#number of employees function
 
+#number of employees function
 def get_num_employee():
     while True:
         try:
