@@ -34,7 +34,7 @@ def get_age():
 # Years Coding Function
 
 
-def years_coding():
+def get_years_coding():
     while True:
         try:
             coding = int(
@@ -47,7 +47,7 @@ def years_coding():
     return coding
 
 
-def birthday_info():
+def get_birthday_info():
     while True:
         try:
             birthday_info = input(
@@ -63,6 +63,48 @@ def birthday_info():
             print(f"{e}: Please enter all three inputs as 'YYYY' 'MM' 'DD'\n> ")
     return birthday
 
+def get_date_of_employment():
+    while True:
+        try:
+            emp_date = input(
+                "Please enter your employment start date in 'YYYY' 'MM' 'DD' seperated by spaces: \n> ")
+            emp_dates = emp_date.split(" ")
+            # Check employment dates
+            employment_date = str(dt.datetime(
+                year=int(emp_dates[0]), month=int(emp_dates[1]), day=int(emp_dates[2]))).split()[0]
+            break
+        except ValueError as e:
+            print(f"{e}")
+        except IndexError as e:
+            print(f"{e}: Please enter all three inputs as 'YYYY' 'MM' 'DD'\n> ")
+    return employment_date
+
+def get_salary():
+    while True:
+        try:
+            age = int(input("Please enter your salary (rounded to the nearest dollar): \n> "))
+            break
+        except ValueError:
+            print("Please enter a number for your salary!\n> ")
+        except TypeError:
+            print("Please enter a number for your salary!\n> ")
+    return age
+
+def get_department():
+    return input("Please enter your department: \n> ")
+
+def get_num_employee():
+    while True:
+        try:
+            num_employee = int(
+                input("How many employees you want to add?\n> "))
+            break
+        except ValueError:
+            print("Please enter an integer for how many employees you want:\n> ")
+        except TypeError:
+            print(
+                "Please enter an integer type number for how many employees you want:\n> ")
+    return num_employee
 
 def list_employees():
 
@@ -83,21 +125,7 @@ def list_employees():
         print("Birthday: " + str(i["birthday"]))
         print()
 
-
-def num_employee():
-    while True:
-        try:
-            num_employee = int(
-                input("How many employees you want to add?\n> "))
-            break
-        except ValueError:
-            print("Please enter an integer for how many employees you want:\n> ")
-        except TypeError:
-            print(
-                "Please enter an integer type number for how many employees you want:\n> ")
-    return num_employee
-
-
+#may not even be needed?
 def printlist(self, list):
     for employee in list:
         print("ID: " + employee.dict_user["id"])
@@ -106,10 +134,7 @@ def printlist(self, list):
         print("Age: " + employee.dict_user["age"])
         print("Years Coding: " + employee.dict_user["years_coding"])
         print("Birthday: " + employee.dict_user["birthday"])
-        print("First Languages: " + employee.dict_user["first_languages"][0] + ", " +
-              employee.dict_user["first_languages"][1] + ", " +
-              employee.dict_user["first_languages"][2])
-        print("Favorite Languages: " + employee.dict_user["favorite_languages"][0] + ", " +
-              employee.dict_user["favorite_languages"][1] + ", " +
-              employee.dict_user["favorite_languages"][2])
+        print("Date of Employment: " + str(employee.dict_user["date_of_employment"]))
+        print("Salary: $" + str(employee.dict_user["salary"]))
+        print("Department: " + employee.dict_user["department"])
         print()
