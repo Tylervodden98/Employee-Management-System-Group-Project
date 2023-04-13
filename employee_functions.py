@@ -3,6 +3,7 @@ import datetime as dt
 import os
 import random
 import json
+import employee
 
 # User input functions for employee class
 
@@ -180,7 +181,7 @@ def printlist(self, list):
 
 
 #add employee to dictionary function
-def add():
+def add_employee():
     print("You are adding a new employee\n")
     
     emp = employee.Employee(
