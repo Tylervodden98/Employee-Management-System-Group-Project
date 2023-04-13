@@ -278,7 +278,7 @@ def remove_employee():
             print("\nSorry this is not a valid employee id. Please try again.")
 
 
-def update():
+def update_employee():
     emp_id = input("Enter employee ID: ")
     # Check if employee with the given ID exists
     with open("./employees.json", "r") as json_file:

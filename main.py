@@ -27,6 +27,7 @@ def menu():
                 pass
             elif choice == 'U':
                 # Call Employee Updating Function
+                emp.update_employee()
                 pass
             else:
                 raise MenuInputException()
