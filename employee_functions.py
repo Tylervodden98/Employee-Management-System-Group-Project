@@ -1,20 +1,12 @@
 import employee
-import csv
 import datetime as dt
-import os
 import random
 import json
 import employee
 
 # User input functions for employee class
 
-# Name Function
-
-global employee_list
-
 # first and last name functions
-
-
 def get_fname():
     while True:
         try:
@@ -26,7 +18,6 @@ def get_fname():
             print("Please enter a number for your age!\n> ")
 
     return fname
-
 
 def get_lname():
     while True:
@@ -41,22 +32,18 @@ def get_lname():
     return lname
 
 # Age function
-
-
 def get_age():
     while True:
         try:
             age = int(input("Please enter your age: \n> "))
             break
         except ValueError:
-            print("Please enter a number for your age!\n> ")
+            print("Please enter a number for your age!")
         except TypeError:
-            print("Please enter a number for your age!\n> ")
+            print("Please enter a number for your age!")
     return age
 
 # Years Coding Function
-
-
 def get_years_coding():
     while True:
         try:
@@ -70,8 +57,6 @@ def get_years_coding():
     return coding
 
 # Birthdeay function
-
-
 def get_birthday_info():
     while True:
         try:
@@ -89,8 +74,6 @@ def get_birthday_info():
     return birthday
 
 # employment date function
-
-
 def get_date_of_employment():
     while True:
         try:
@@ -104,11 +87,10 @@ def get_date_of_employment():
         except ValueError as e:
             print(f"{e}")
         except IndexError as e:
-            print(f"{e}: Please enter all three inputs as 'YYYY' 'MM' 'DD'\n> ")
+            print(f"{e}: Please enter all three inputs as 'YYYY' 'MM' 'DD'")
     return employment_date
+
 # salary function
-
-
 def get_salary():
     while True:
         try:
@@ -116,13 +98,12 @@ def get_salary():
                 input("Please enter your salary (rounded to the nearest dollar): \n> "))
             break
         except ValueError:
-            print("Please enter a number for your salary!\n> ")
+            print("Please enter a number for your salary!")
         except TypeError:
-            print("Please enter a number for your salary!\n> ")
+            print("Please enter a number for your salary!")
     return age
+
 # id function
-
-
 def get_id():
     with open("./employees.json", "r") as json_file:
 
@@ -141,14 +122,12 @@ def get_id():
             pass
 
     return str(userid)
+
 # department function
-
-
 def get_department():
     return input("Please enter your department: \n> ")
+
 # number of employees function
-
-
 def get_num_employee():
     while True:
         try:
@@ -156,14 +135,13 @@ def get_num_employee():
                 input("How many employees you want to add?\n> "))
             break
         except ValueError:
-            print("Please enter an integer for how many employees you want:\n> ")
+            print("Please enter an integer for how many employees you want.")
         except TypeError:
             print(
-                "Please enter an integer type number for how many employees you want:\n> ")
+                "Please enter an integer type number for how many employees you want.")
     return num_employee
+
 # list of employees function
-
-
 def list_employees():
 
     try:
@@ -183,23 +161,17 @@ def list_employees():
         print("Birthday: " + str(i["birthday"]))
         print()
 
-# may not even be needed?
-
-
-def printlist(self, list):
-    for employee in list:
-        print("ID: " + employee.dict_user["id"])
-        print(
-            "Name: " + employee.dict_user["first_name"] + " " + employee.dict_user["last_name"])
-        print("Age: " + employee.dict_user["age"])
-        print("Years Coding: " + employee.dict_user["years_coding"])
-        print("Birthday: " + employee.dict_user["birthday"])
-        print("Date of Employment: " +
-              str(employee.dict_user["date_of_employment"]))
-        print("Salary: $" + str(employee.dict_user["salary"]))
-        print("Department: " + employee.dict_user["department"])
-        print()
-
+# prints out an employee's information neatly and user-friendly
+def printlist(employee_entry):
+    print("ID: " + employee_entry["id"])
+    print("Name: " + employee_entry["first_name"] + " " + employee_entry["last_name"])
+    print("Age: " + str(employee_entry["age"]))
+    print("Years Coding: " + str(employee_entry["years_coding"]))
+    print("Birthday: " + employee_entry["birthday"])
+    print("Date of Employment: " + str(employee_entry["date_of_employment"]))
+    print("Salary: $" + str(employee_entry["salary"]))
+    print("Department: " + employee_entry["department"])
+    print()
 
 # add employee to dictionary function
 def add_employee():
@@ -230,8 +202,6 @@ def add_employee():
     return
 
 # remove employee to dictionary function
-
-
 def remove_employee():
     # create an empty list to store all employee id's
     list_of_user_ids = []
@@ -252,7 +222,7 @@ def remove_employee():
                 break
             else:
                 id_to_delete = input(
-                    "\nPlease note you will not be able to recover deleted employee. For the employee you'd like to delete, please enter their ID: ")
+                    "\nPlease note you will not be able to recover deleted employee. For the employee you'd like to delete, please enter their ID: \n> ")
                 # if employee id of interest is in list of all valid id's
                 if id_to_delete in list_of_user_ids:
                     with open("employees.json", "r") as employee_json_file:
@@ -277,9 +247,9 @@ def remove_employee():
         except Exception:
             print("\nSorry this is not a valid employee id. Please try again.")
 
-
+#method to update employee information
 def update_employee():
-    emp_id = input("Enter employee ID: ")
+    emp_id = input("Enter employee ID: \n> ")
     # Check if employee with the given ID exists
     with open("./employees.json", "r") as json_file:
         data = json.load(json_file)
@@ -294,9 +264,8 @@ def update_employee():
         print("Employee with ID", emp_id, "found")
         # keeps track of dictionary keys
         keys = list(data['emp_details'][0].keys())
-        print(keys)
         try:
-            attribute = input(f"Enter attribute to update {keys} ")
+            attribute = input(f"Enter attribute to update: {keys} \n> ")
             if attribute in keys and attribute != "id":
                 # value = input("Enter new value for attribute: ")
                 if attribute == "first_name":
@@ -327,8 +296,12 @@ def update_employee():
             print("Attribute doesnt exist in dictionary")
 
         # Update attribute
-
-        print(data['emp_details'][index])
+        print("Employee listing to write: \n")
+        printlist( data['emp_details'][index])
 
     else:
         print("Employee with ID", emp_id, "does not exist")
+
+    # Write updated employee data to JSON file
+    with open('employees.json', 'w') as f:
+        json.dump(data, f,indent=4)

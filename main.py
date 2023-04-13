@@ -1,9 +1,5 @@
-import csv
 import datetime as dt
-import os
-import employee
 import employee_functions as emp
-
 
 def menu():
     # Ask user for what they would like to do
@@ -32,16 +28,12 @@ def menu():
             else:
                 raise MenuInputException()
         except MenuInputException:
-            print("Please enter a valid input 'L' 'A' 'U' 'R' 'Q'")
-
+            pass
 
 class MenuInputException(Exception):
-    pass
-
+    def __init__(self):
+        print("Please enter a valid input 'L' 'A' 'U' 'R' 'Q'")
 
 def main():
-
     menu()
-
-
 main()
