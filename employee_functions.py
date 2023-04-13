@@ -150,7 +150,7 @@ def remove_employee():
 
     while True:
         try:
-         # check to see if file contains any employees
+         # check to see if file is empty 
             with open("employees.json", "r") as employee_json_file:
                 emp_data = json.load(employee_json_file)
             if(emp_data["emp_details"] == []):
@@ -160,7 +160,6 @@ def remove_employee():
                 id_to_delete = input("\nPlease note you will not be able to recover deleted employee. For the employee you'd like to delete, please enter their ID: ")
                 # if employee id of interest is in list of all valid id's
                 if id_to_delete in list_of_user_ids:
-                    # read and write to json file
                     with open("employees.json", "r") as employee_json_file:
                         emp_data = json.load(employee_json_file)
                         # use a for loop to iterate through JSON object returned as a dictionary 
@@ -171,7 +170,7 @@ def remove_employee():
                                 emp_data["emp_details"].pop(i)
                                 print(f"\n The employee {emp_dict['first_name']} {emp_dict['last_name']} with employee ID {id_to_delete} was successfully deleted.")
 
-                        # write changes back to json file 
+                    # write changes back to json file 
                     with open("employees.json", "w") as employee_json_file:
                         json_string = json.dumps(emp_data, indent=4)
                         employee_json_file.write(json_string)
