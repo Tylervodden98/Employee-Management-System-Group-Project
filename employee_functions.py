@@ -181,7 +181,7 @@ def printlist(self, list):
 
 
 #add employee to dictionary function
-def add_employee():
+def add():
     print("You are adding a new employee\n")
     
     emp = employee.Employee(
