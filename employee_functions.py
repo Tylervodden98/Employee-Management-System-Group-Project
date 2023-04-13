@@ -13,9 +13,9 @@ def get_fname():
             fname = input("What is your first name?\n>")
             break
         except ValueError:
-            print("Please enter a number for your age!\n> ")
+            print("Please enter a number for your age!")
         except TypeError:
-            print("Please enter a number for your age!\n> ")
+            print("Please enter a number for your age!")
 
     return fname
 
@@ -25,9 +25,9 @@ def get_lname():
             lname = input("What is your last name?\n>")
             break
         except ValueError:
-            print("Please enter a number for your age!\n> ")
+            print("Please enter a number for your age!")
         except TypeError:
-            print("Please enter a number for your age!\n> ")
+            print("Please enter a number for your age!")
 
     return lname
 
@@ -51,9 +51,9 @@ def get_years_coding():
                 input("Please enter your amount of years coding: \n> "))
             break
         except ValueError:
-            print("Please enter a number for your years of experience coding!\n> ")
+            print("Please enter a number for your years of experience coding!")
         except TypeError:
-            print("Please enter a number for your years of experience coding!\n> ")
+            print("Please enter a number for your years of experience coding!")
     return coding
 
 # Birthdeay function
@@ -70,7 +70,7 @@ def get_birthday_info():
         except ValueError as e:
             print(f"{e}")
         except IndexError as e:
-            print(f"{e}: Please enter all three inputs as 'YYYY' 'MM' 'DD'\n> ")
+            print(f"{e}: Please enter all three inputs as 'YYYY' 'MM' 'DD'.")
     return birthday
 
 # employment date function
@@ -87,7 +87,7 @@ def get_date_of_employment():
         except ValueError as e:
             print(f"{e}")
         except IndexError as e:
-            print(f"{e}: Please enter all three inputs as 'YYYY' 'MM' 'DD'")
+            print(f"{e}: Please enter all three inputs as 'YYYY' 'MM' 'DD'.")
     return employment_date
 
 # salary function
@@ -116,7 +116,7 @@ def get_id():
         try:
             userid = random.randint(1000, 9999)
             if userid in ids:
-                raise Exception('User Id exists')
+                raise Exception('User Id exists.')
             break
         except:
             pass
@@ -133,7 +133,7 @@ def get_department():
             if x in departments:
                 break
             else:
-                print("department does not exist, select another department")
+                print("Department does not exist, select another department.")
         except:
             pass
     return x
@@ -186,7 +186,7 @@ def printlist(employee_entry):
 
 # add employee to dictionary function
 def add_employee():
-    print("You are adding a new employee\n")
+    print("You are adding a new employee.\n")
 
     emp = employee.Employee(
         id=get_id(),
@@ -208,7 +208,7 @@ def add_employee():
         newdict = {'emp_details': data}
         json.dump(newdict, outfile, indent=4)
         print(
-            f"Added employee {emp.dict_user['first_name']} {emp.dict_user['last_name']}")
+            f"Added employee {emp.dict_user['first_name']} {emp.dict_user['last_name']}.")
 
     return
 
@@ -229,7 +229,7 @@ def remove_employee():
                 emp_data = json.load(employee_json_file)
             if (emp_data["emp_details"] == []):
                 print(
-                    "\nSorry the file is empty. There are no more employees to delete.")
+                    "\nSorry, the file is empty. There are no more employees to delete.")
                 break
             else:
                 id_to_delete = input(
@@ -272,7 +272,7 @@ def update_employee():
             emp_there = True
             pass
     if emp_there:
-        print("Employee with ID", emp_id, "found")
+        print("Employee with ID", emp_id, "found.")
         # keeps track of dictionary keys
         keys = list(data['emp_details'][0].keys())
         try:
@@ -304,14 +304,14 @@ def update_employee():
                 raise Exception
 
         except:
-            print("Attribute doesnt exist in dictionary")
+            print("Attribute doesnt exist in dictionary.")
 
         # Update attribute
         print("Employee listing to write: \n")
         printlist( data['emp_details'][index])
 
     else:
-        print("Employee with ID", emp_id, "does not exist")
+        print("Employee with ID", emp_id, "does not exist.")
 
     # Write updated employee data to JSON file
     with open('employees.json', 'w') as f:

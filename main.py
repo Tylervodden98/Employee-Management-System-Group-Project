@@ -31,7 +31,7 @@ def menu():
 
 class MenuInputException(Exception):
     def __init__(self):
-        print("Please enter a valid input 'L' 'A' 'U' 'R' 'Q'")
+        print("Please enter a valid input: 'L' 'A' 'U' 'R' 'Q'")
 
 def main():
     menu()
