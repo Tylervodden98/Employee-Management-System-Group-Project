@@ -138,3 +138,35 @@ def printlist(self, list):
         print("Salary: $" + str(employee.dict_user["salary"]))
         print("Department: " + employee.dict_user["department"])
         print()
+
+def remove_employee():
+    while True: 
+        try:
+            id_to_delete = input("""\nPlease note you will not be able to recover deleted employee. 
+                                    For the employee you'd like to delete, please enter their ID: """)
+
+            # read and write to json file
+            with open("employees.json", "r") as employee_json_file:
+                # the json.load() function which accepts a file object and does the f.read() part for you under the hood
+                emp_data = json.load(employee_json_file)
+                # use a for loop to iterate through JSON object returned as a dictionary 
+                for i, emp_dict in enumerate (emp_data["emp_details"]):
+                    # check to see if employee with given id exists
+                    print(emp_dict["id"])
+                    if id_to_delete == emp_dict["id"]:
+                        # remove dictionary containing employee id 
+                        emp_data["emp_details"].pop(i)
+                        print(emp_data)
+                    else:
+                        break
+                # write changes back to json file 
+            with open("employees.json", "w") as employee_json_file:
+                json_string = json.dumps(emp_data, indent=4)
+                employee_json_file.write(json_string)
+
+        except:    
+            print("Sorry this employee doesn't exist. Please enter a valid employee id.")
+            # if user wants to go back to main menu ???
+
+            # loop through and collect all ids into a list
+

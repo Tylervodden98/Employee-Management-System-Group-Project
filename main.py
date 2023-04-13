@@ -20,7 +20,7 @@ def menu():
                 quit()
             elif choice == 'R':
                 # Call Employee Removing Function
-                pass
+                emp.remove_employee()
             elif choice == 'A':
                 # Call Employee Adding Function
                 pass
