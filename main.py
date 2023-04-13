@@ -22,7 +22,6 @@ def menu():
                 # Call Employee Removing Function
                 emp.remove_employee()
             elif choice == 'A':
-                # Call Employee Adding Function
                 emp.add_employee()
                 pass
             elif choice == 'U':

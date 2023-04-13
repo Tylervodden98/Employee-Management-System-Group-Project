@@ -145,9 +145,23 @@ def get_id():
 
 
 def get_department():
-    return input("Please enter your department: \n> ")
-# number of employees function
 
+    departments = ['CEO','COO', 'finance', 'office manager', 'receptionist','dog food taster']
+
+    while True:
+        try:
+            x = input("Please enter your department: \n> ")
+            if x in departments:
+                break
+            else:
+                print("department does not exist, select another department")
+        except:
+            pass
+  
+
+
+    return x
+#number of employees function
 
 def get_num_employee():
     while True:
