@@ -1,17 +1,6 @@
 {
     "emp_details": [
         {
-            "id": "2000",
-            "first_name": "Arthur",
-            "last_name": "Pendragon",
-            "age": 250,
-            "years_coding": 50,
-            "department": "finance",
-            "date_of_employment": "1998-10-12",
-            "salary": 50000,
-            "birthday": "20-02-1773"
-        },
-        {
             "id": "2200",
             "first_name": "Bob",
             "last_name": "The Builder",

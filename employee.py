@@ -2,7 +2,7 @@
 class Employee:
     dict_user = {}
 
-    def __init__(self, id, first_name, last_name, age, years_coding, birthday, date_of_employment, salary, department):
+    def __init__(self, id: str, first_name: str, last_name: str, age: int, years_coding: int, birthday: str, date_of_employment: str, salary: int, department: str):
         self.dict_user["id"] = id
         self.dict_user["first_name"] = first_name
         self.dict_user["last_name"] = last_name

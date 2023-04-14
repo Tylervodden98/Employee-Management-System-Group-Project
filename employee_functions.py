@@ -7,6 +7,8 @@ import employee
 # User input functions for employee class
 
 # first and last name functions
+
+
 def get_fname():
     while True:
         try:
@@ -18,6 +20,7 @@ def get_fname():
             print("Please enter a number for your age!")
 
     return fname
+
 
 def get_lname():
     while True:
@@ -32,6 +35,8 @@ def get_lname():
     return lname
 
 # Age function
+
+
 def get_age():
     while True:
         try:
@@ -44,6 +49,8 @@ def get_age():
     return age
 
 # Years Coding Function
+
+
 def get_years_coding():
     while True:
         try:
@@ -57,6 +64,8 @@ def get_years_coding():
     return coding
 
 # Birthdeay function
+
+
 def get_birthday_info():
     while True:
         try:
@@ -74,6 +83,8 @@ def get_birthday_info():
     return birthday
 
 # employment date function
+
+
 def get_date_of_employment():
     while True:
         try:
@@ -91,6 +102,8 @@ def get_date_of_employment():
     return employment_date
 
 # salary function
+
+
 def get_salary():
     while True:
         try:
@@ -104,6 +117,8 @@ def get_salary():
     return age
 
 # id function
+
+
 def get_id():
     with open("./employees.json", "r") as json_file:
 
@@ -124,8 +139,11 @@ def get_id():
     return str(userid)
 
 # department function
+
+
 def get_department():
-    departments = ['CEO','COO', 'finance', 'office manager', 'receptionist','dog food taster']
+    departments = ['CEO', 'COO', 'finance',
+                   'office manager', 'receptionist', 'dog food taster']
 
     while True:
         try:
@@ -138,7 +156,9 @@ def get_department():
             pass
     return x
 
-#number of employees function
+# number of employees function
+
+
 def get_num_employee():
     while True:
         try:
@@ -153,6 +173,8 @@ def get_num_employee():
     return num_employee
 
 # list of employees function
+
+
 def list_employees():
 
     try:
@@ -173,9 +195,12 @@ def list_employees():
         print()
 
 # prints out an employee's information neatly and user-friendly
+
+
 def printlist(employee_entry):
     print("ID: " + employee_entry["id"])
-    print("Name: " + employee_entry["first_name"] + " " + employee_entry["last_name"])
+    print("Name: " + employee_entry["first_name"] +
+          " " + employee_entry["last_name"])
     print("Age: " + str(employee_entry["age"]))
     print("Years Coding: " + str(employee_entry["years_coding"]))
     print("Birthday: " + employee_entry["birthday"])
@@ -185,6 +210,8 @@ def printlist(employee_entry):
     print()
 
 # add employee to dictionary function
+
+
 def add_employee():
     print("You are adding a new employee.\n")
 
@@ -213,6 +240,8 @@ def add_employee():
     return
 
 # remove employee to dictionary function
+
+
 def remove_employee():
     # create an empty list to store all employee id's
     list_of_user_ids = []
@@ -258,7 +287,9 @@ def remove_employee():
         except Exception:
             print("\nSorry this is not a valid employee id. Please try again.")
 
-#method to update employee information
+# method to update employee information
+
+
 def update_employee():
     emp_id = input("Enter employee ID: \n> ")
     # Check if employee with the given ID exists
@@ -308,11 +339,11 @@ def update_employee():
 
         # Update attribute
         print("Employee listing to write: \n")
-        printlist( data['emp_details'][index])
+        printlist(data['emp_details'][index])
 
     else:
         print("Employee with ID", emp_id, "does not exist.")
 
     # Write updated employee data to JSON file
     with open('employees.json', 'w') as f:
-        json.dump(data, f,indent=4)
+        json.dump(data, f, indent=4)

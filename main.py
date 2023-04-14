@@ -1,6 +1,7 @@
 import datetime as dt
 import employee_functions as emp
 
+
 def menu():
     # Ask user for what they would like to do
     while True:
@@ -29,10 +30,14 @@ def menu():
         except MenuInputException:
             pass
 
+
 class MenuInputException(Exception):
     def __init__(self):
         print("Please enter a valid input: 'L' 'A' 'U' 'R' 'Q'")
 
+
 def main():
     menu()
+
+
 main()
